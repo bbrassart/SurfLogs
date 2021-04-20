@@ -8,7 +8,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 
-import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import SessionsScreen from '../screens/SessionsScreen';
 import LogScreen from '../screens/LogScreen';
@@ -16,13 +15,12 @@ import { BottomTabParamList, SessionsParamList, LogParamList } from '../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
-export default function BottomTabNavigator() {
+export default function HomeNavigator() {
   const colorScheme = useColorScheme();
 
   return (
     <BottomTab.Navigator
-      initialRouteName="Sessions"
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
+      initialRouteName="Sessions">
       <BottomTab.Screen
         name="Sessions"
         component={SessionsNavigator}
@@ -57,7 +55,7 @@ function SessionsNavigator() {
       <SessionsStack.Screen
         name="SessionsScreen"
         component={SessionsScreen}
-        options={{ headerTitle: 'Surf sessions' }}
+        options={{ headerTitle: 'Previous Sessions' }}
       />
     </SessionsStack.Navigator>
   );
